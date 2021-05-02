@@ -1,0 +1,45 @@
+.mt-tbl-header {
+    background-color: #ff632a;
+    font-weight: bold;
+  }
+
+  ::ng-deep .mat-table {
+    margin-bottom: 5px;
+  }
+
+  ::ng-deep .mat-paginator-page-size {
+    margin-top: 0px;
+  }
+
+  ::ng-deep .mat-paginator-range-actions {
+    margin-top: -50px;
+  }
+
+  ::ng-deep .mat-paginator-container {
+    display: flex;
+    align-items: center;
+    margin-left: fill;
+    margin-right: auto;
+    justify-content: flex-end;
+    min-height: 56px;
+    padding: 0 8px;
+    flex-wrap: wrap-reverse;
+    width: 100%;
+  }
+
+  /*****************************
+  MOBILE
+   *****************************/
+  @media only screen and (max-width: 768px) {
+    ::ng-deep .mat-paginator-icon {
+      margin-top: 0px;
+    }
+
+    ::ng-deep .mat-paginator-range-actions {
+      margin-top: 0px;
+    }
+
+    ::ng-deep .mat-paginator-page-size {
+      margin-top: 0px;
+    }
+  }

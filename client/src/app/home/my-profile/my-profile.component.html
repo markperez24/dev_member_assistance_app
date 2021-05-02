@@ -1,0 +1,225 @@
+<div class="main-container">
+  <mat-card class="profile-photo-container">
+    <mat-card-header class="profile-photo-header">
+      <div mat-card-avatar class="header-image-icon"></div>
+      <mat-card-title ><p [style.font-size.px]="profile?.fullName && shrinkText(profile.fullName)">{{ profile?.fullName }}</p></mat-card-title>
+      <mat-card-subtitle>Acct#: {{ profile.accountNumber }}</mat-card-subtitle>
+    </mat-card-header>
+    <img mat-card-image
+         class="profile-photo"
+         [src]="profilePhoto"
+         alt="assets/images/profile.png">
+    <!--<img mat-card-image
+         class="profile-photo"
+         [src]="profilePhoto"
+         alt="Place image title"
+         *ngIf="!isProfilePhotoLoading; else noImageFound">
+    <ng-template #noImageFound>
+      <img mat-card-image class="profile-photo"
+           src="http://localhost:9000/images/profile.png"
+           alt="ImageNotFound">
+    </ng-template>-->
+    <mat-card-actions class="profile-photo-action-container">
+      <button mat-button type="button" class="btn btn-primary profile-photo-action" (click)="uploadProfilePhoto()">
+        {{ actions.photoActionStr }}
+      </button>
+      <button mat-button type="button" class="btn btn-primary profile-photo-action" (click)="uploadIdPhoto()">
+        {{ actions.idActionStr }}
+      </button>
+    </mat-card-actions>
+  </mat-card>
+  <mat-card class="profile-info-container">
+    <mat-card-header>
+      <mat-card-title><h3>My Profile</h3></mat-card-title>
+    </mat-card-header>
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
+      <div class="profile-input-field">
+        <mat-form-field appearance="outline">
+          <mat-label>First Name</mat-label>
+          <input type="text" matInput
+                 [errorStateMatcher]="matcher"
+                 placeholder=""
+                 formControlName="firstName">
+        </mat-form-field>
+      </div>
+      <div class="profile-input-field">
+        <mat-form-field appearance="outline">
+          <mat-label>Middle Name</mat-label>
+          <input type="text" matInput [errorStateMatcher]="matcher"
+                 placeholder=""
+                 formControlName="middleName">
+        </mat-form-field>
+      </div>
+      <div class="profile-input-field">
+        <mat-form-field appearance="outline">
+          <mat-label>Last Name</mat-label>
+          <input type="text"
+                 matInput [errorStateMatcher]="matcher"
+                 placeholder=""
+                 formControlName="lastName">
+          <mat-error *ngIf="form.controls.lastName.hasError('required')">
+            Last Name is <strong>required</strong>
+          </mat-error>
+        </mat-form-field>
+      </div>
+      <div class="profile-input-field">
+        <mat-form-field appearance="outline">
+          <mat-label>Gender</mat-label>
+          <input type="text"
+                 matInput [errorStateMatcher]="matcher"
+                 placeholder=""
+                 formControlName="gender">
+          <mat-error *ngIf="form.controls.gender.hasError('required')">
+            Gender is <strong>required</strong>
+          </mat-error>
+        </mat-form-field>
+      </div>
+      <div class="profile-input-field">
+        <mat-form-field appearance="outline">
+          <mat-label>Date of Birth</mat-label>
+          <input matInput [matDatepicker]="picker" formControlName="dateOfBirth">
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker [disabled]="profile.dateOfBirth"></mat-datepicker>
+          <mat-error *ngIf="form.controls.dateOfBirth.hasError('required')">
+            Date of Birth is <strong>required</strong>
+          </mat-error>
+        </mat-form-field>
+      </div>
+      <div class="profile-input-field">
+        <mat-form-field appearance="outline" class="short-field">
+          <mat-label>Age</mat-label>
+          <input type="number" matInput
+                 maxlength="3"
+                 [errorStateMatcher]="matcher"
+                 placeholder=""
+                 formControlName="age">
+        </mat-form-field>
+        <mat-error *ngIf="form.controls.age.hasError('required')">
+          Age is <strong>required</strong>
+        </mat-error>
+        <mat-error *ngIf="form.controls.age.hasError('min')">
+          Age minimum is <strong>12</strong>
+        </mat-error>
+        <mat-error *ngIf="form.controls.age.hasError('max')">
+          Age maximum is <strong>120</strong>
+        </mat-error>
+      </div>
+      <div class="profile-text-area-edit-field">
+        <mat-form-field appearance="outline">
+          <mat-label>Street Address</mat-label>
+          <textarea matInput [errorStateMatcher]="matcher"
+                    placeholder="Unit/Block Number & Street"
+                    formControlName="address1"></textarea>
+          <mat-error *ngIf="form.controls.address1.hasError('required')">
+            Address 1 is <strong>required</strong>
+          </mat-error>
+        </mat-form-field>
+      </div>
+      <div class="profile-text-area-edit-field">
+        <mat-form-field appearance="outline">
+          <mat-label>Town / Municipal</mat-label>
+          <textarea matInput [errorStateMatcher]="matcher"
+                    placeholder="Municipal / Town"
+                    formControlName="address2"></textarea>
+          <mat-error *ngIf="form.controls.address2.hasError('required')">
+            Address 2 is <strong>required</strong>
+          </mat-error>
+        </mat-form-field>
+      </div>
+      <div class="profile-input-edit-field">
+        <mat-form-field appearance="outline">
+          <mat-label>City</mat-label>
+          <input type="text" matInput [errorStateMatcher]="matcher"
+                 placeholder=""
+                 formControlName="city"/>
+          <mat-error *ngIf="form.controls.city.hasError('required')">
+            City 1 is <strong>required</strong>
+          </mat-error>
+        </mat-form-field>
+      </div>
+      <div  class="profile-input-edit-field">
+        <mat-form-field appearance="outline">
+          <mat-label>Province</mat-label>
+          <input type="text" matInput [errorStateMatcher]="matcher"
+                 placeholder="Province"
+                 formControlName="province"/>
+          <mat-error *ngIf="form.controls.province.hasError('required')">
+            Province is <strong>required</strong>
+          </mat-error>
+        </mat-form-field>
+      </div>
+      <div class="profile-input-edit-field">
+        <mat-form-field appearance="outline">
+          <mat-label>Contact Number</mat-label>
+          <input type="text" matInput [errorStateMatcher]="matcher"
+                 placeholder=""
+                 formControlName="contactNumber">
+          <mat-error *ngIf="form.controls.contactNumber.hasError('required')">
+            Contact Number is <strong>required</strong>
+          </mat-error>
+        </mat-form-field>
+      </div>
+      <div  class="profile-input-edit-field">
+        <mat-form-field appearance="outline">
+          <mat-label>Email Address</mat-label>
+          <input type="email" matInput [errorStateMatcher]="matcher"
+                 placeholder=""
+                 formControlName="email">
+        </mat-form-field>
+      </div>
+      <div class="form-action-container" *ngIf="!onEdit">
+        <div class="form-action-item col-sm-12">
+          <button type="button"
+                  mat-raised-button
+                  class="btn btn-primary form-action-button"
+                  *ngIf="!onEdit"
+                  [disabled]="onEdit"
+                  [hidden]="onEdit"
+                  (click)="edit()">
+            <span class="">Edit Profile</span>
+          </button>
+        </div>
+      </div>
+      <app-spinner [isLoading]="processing"
+                   [isLoadingLimitReached]="isRateLimitReached"></app-spinner>
+      <div class="form-action-container" *ngIf="!onEdit">
+        <div class="form-action-item col-sm-12">
+          <button type="button"
+                  mat-raised-button
+                  class="btn btn-primary form-action-button"
+                  *ngIf="!onEdit"
+                  [disabled]="onEdit"
+                  [hidden]="onEdit"
+                  (click)="changePassword()">
+            <span class="">Change Password</span>
+          </button>
+        </div>
+      </div>
+      <div class="form-action-container col-md-12" *ngIf="onEdit">
+        <div class="form-action-item col-md-6">
+          <button mat-raised-button
+                  class="btn btn-primary form-action-button col-md-10"
+                  *ngIf="onEdit"
+                  [disabled]="!onEdit || processing || form.invalid"
+                  [hidden]="!onEdit">
+            <span *ngIf="processing" class="spinner-border spinner-border-sm mr-1"></span>
+            Save
+          </button>
+        </div>
+        <div class="form-action-item col-md-6">
+          <button type="button"
+                  mat-button
+                  mat-raised-button
+                  color="warn"
+                  class="btn btn-secondary form-action-button col-md-10"
+                  *ngIf="onEdit"
+                  [disabled]="!onEdit"
+                  [hidden]="!onEdit"
+                  (click)="cancel()">
+            Cancel
+          </button>
+        </div>
+      </div>
+    </form>
+  </mat-card>
+</div>

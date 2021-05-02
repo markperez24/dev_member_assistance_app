@@ -1,0 +1,7 @@
+<div class="spinner-loading-shade"
+     *ngIf="isLoading || isLoadingLimitReached">
+  <mat-spinner *ngIf="isLoading"></mat-spinner>
+  <div class="example-rate-limit-reached" *ngIf="isLoadingLimitReached">
+    Request might had expired or Application is under maintenance. Please try again.
+  </div>
+</div>

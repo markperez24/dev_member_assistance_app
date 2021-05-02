@@ -1,0 +1,32 @@
+.mat-dialog-title {
+  margin: 0 0 20px;
+  display: flex;
+  background-color: gray;
+  padding: 0px;
+  margin: -24px !important;
+  height: 50px;
+  align-items: center !important;
+  justify-content: center;
+  color: white;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.mat-dialog-content {
+  display: block;
+  margin-top: 50px;
+  padding: 0 24px;
+  max-height: 65vh;
+  overflow: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.mat-dialog-actions {
+  padding: 15px 0px 0px 0px;
+  display: flex;
+  flex-wrap: wrap;
+  min-height: 52px;
+  align-items: center;
+  box-sizing: content-box;
+  margin-bottom: -10px;
+}

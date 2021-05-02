@@ -1,0 +1,123 @@
+.page-header {
+  font-size: 24px;
+  font-weight: bolder;
+}
+
+.section-header {
+  font-size: 18px;
+  font-weight: bold;
+  margin-top: 25px;
+}
+
+.search-filter {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: -30px;
+}
+
+.hospital-list-container {
+  margin-top: 20px;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
+
+.hospital-summary-container {
+  width: 100%;
+  margin: auto;
+}
+
+.table-container {
+  position: relative;
+  max-height: 400px;
+  overflow: auto;
+}
+
+mat-label {
+  font-weight: bold;
+}
+
+.mat-cell {
+  text-align: left;
+}
+
+.mt-tbl-header {
+  background-color: #ff632a;
+  font-weight: bold;
+  font-size: 14px;
+
+}
+
+.mt-tbl-action-header {
+  text-align: center;
+}
+
+.mat-row:hover {
+  background-color: #4e7cdf;
+  cursor: pointer;
+}
+
+::ng-deep .mat-table {
+  margin-bottom: 5px;
+}
+
+::ng-deep .mat-paginator-page-size {
+  margin-top: 0px;
+}
+
+::ng-deep .mat-paginator-range-actions {
+  margin-top: -50px;
+}
+
+::ng-deep .mat-paginator-container {
+  display: flex;
+  align-items: center;
+  margin-left: fill;
+  margin-right: auto;
+  justify-content: flex-end;
+  min-height: 56px;
+  padding: 0 8px;
+  flex-wrap: wrap-reverse;
+  width: 100%;
+}
+
+//content container section 1
+.content-container {
+  padding-left: 30px;
+}
+
+/*****************************
+MOBILE
+*****************************/
+@media only screen and (max-width: 768px) {
+  .hospital-list-container {
+    margin-top: 20px;
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+  }
+
+  .hospital-summary-container {
+    width: 100%;
+    margin: auto;
+  }
+
+  .mat-row:hover {
+    background-color: #4e7cdf;
+    cursor: pointer;
+  }
+
+  ::ng-deep .mat-paginator-icon {
+    margin-top: 0px;
+  }
+
+  ::ng-deep .mat-paginator-range-actions {
+    margin-top: 0px;
+  }
+
+  ::ng-deep .mat-paginator-page-size {
+    margin-top: 0px;
+  }
+}

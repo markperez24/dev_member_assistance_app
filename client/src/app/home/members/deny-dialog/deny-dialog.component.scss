@@ -1,0 +1,12 @@
+.input-reason {
+  min-height: 100px;
+}
+
+.deny-dialog-content {
+  overflow-y: hidden !important;
+  min-height: 150px;
+}
+
+::ng-deep .mat-dialog-container {
+  overflow-y: hidden !important;
+}

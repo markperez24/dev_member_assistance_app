@@ -1,0 +1,46 @@
+export declare const enum MemberAssistanceMessages {
+  TITLE_INTERNAL_SERVER_ERROR = 'Server Error',
+  MESSAGE_INTERNAL_SERVER_ERROR = 'Unable to process request. Please try again.',
+  RES_STATUS_SUCCESS= 'success',
+  RES_STATUS_ERROR= 'error',
+  MESSAGE_WARNING_UNABLE_TO_GET_MEMBER_LISTING = 'Unable to list members. Please contact administrator.',
+  //APPLY MEDICAL ASSISTANCE
+  MSG_MAA_HEADER = 'MAHAHALAGANG PAALALA Ka-Tingog!',
+  MSG_MAA_FOOTER = 'Salamat sa pang-unawa!',
+  TITLE_WARNING_COMPLETE_FIELDS = 'Warning!',
+  MESSAGE_WARNING_COMPLETE_FIELDS = 'Please complete the required fields.',
+  TITLE_SAVE_MEDICAL_ASSISTANCE_APPLICATION = 'Save Application',
+  MSG_SAVE_MEDICAL_ASSISTANCE_APPLICATION = 'Are you sure you want to save?',
+  TITLE_CANCEL_MEDICAL_ASSISTANCE_APPLICATION = 'Cancel Application',
+  MSG_CANCEL_MEDICAL_ASSISTANCE_APPLICATION = 'Are you sure you want to cancel?',
+  TITLE_SUCCESS_APPLY_MEDICAL_ASSISTANCE = 'Success Application',
+  MSG_SUCCESS_APPLY_MEDICAL_ASSISTANCE = 'Medical Assistance Application is saved.',
+  //REPORTS
+  TITLE_SUCCESS_MEMBER_REPORTS_GENERATED = "Report Generation Success",
+  MSG_SUCCESS_MEMBER_REPORTS_GENERATED = "Generated member report file.",
+  TITLE_SUCCESS_HOSPITAL_REPORTS_GENERATED = "Report Generation Success",
+  MSG_SUCCESS_HOSPITAL_REPORTS_GENERATED = "Generated hospital report file.",
+  //HOSPITALS
+  TITLE_SAVE_HOSPITAL_ADDITIONAL_BUDGET = 'Add Hospital Budget',
+  MSG_SAVE_HOSPITAL_ADDITIONAL_BUDGET = 'Are you sure you want to add budget?',
+  TITLE_SUCCESS_ADD_BUDGET = 'Success Adding of Budget',
+  MSG_SUCCESS_ADD_BUDGET = 'Additional Hospital Budget is saved.',
+  //MY PROFILE
+  TITLE_UPLOAD_PROFILE_PHOTO = 'Upload Profile Photo',
+  TITLE_UPLOAD_ID_PHOTO = 'Upload ID Photo',
+  TITLE_PROFILE_UPDATE_ERROR = 'Profile Update Error',
+  TITLE_PROFILE_UPDATE_SUCCESS = 'Profile Update Success',
+  TITLE_PROFILE_PHOTO_UPLOAD_SUCCESS = 'Photo Upload Success',
+  TITLE_ID_PHOTO_UPLOAD_SUCCESS = 'ID Upload Success',
+  ERROR_MSG_FILE_TYPE_NOT_ALLOWED = 'File type not allowed.',
+  ERROR_MSG_FILE_MAX_SIZE = 'File exceeds max size.',
+  //change password
+  TITLE_CHANGE_PASSWORD_ERROR = 'Password Change Error',
+  TITLE_CHANGE_PASSWORD_SUCCESS = 'Password Change Success',
+  //Button change labels
+  BTN_LABEL_UPDATE_PROFILE_PHOTO = 'Update Photo',
+  TITLE_WARNING_DISPLAY_MEMBERS = 'Display Members Warning',
+  TITLE_WARNING_DISPLAY_HOSPITALS = 'Display Hospitals Warning',
+  TITLE_SUCCESS_VOUCHER_CLAIMED = 'Voucher Claimed Success',
+  MSG_SUCCESS_VOUCHER_CLAIMED = 'Voucher is now claimed. We hope for the patient\'s safe recovery.',
+}

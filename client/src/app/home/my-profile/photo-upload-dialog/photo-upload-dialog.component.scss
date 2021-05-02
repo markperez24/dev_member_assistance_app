@@ -1,0 +1,110 @@
+.mat-dialog-title {
+  margin: 0 0 20px;
+  display: flex;
+  background-color: #143cbf;
+  padding: 0px;
+  margin: -24px !important;
+  height: 50px;
+  align-items: center !important;
+  justify-content: center;
+  color: white;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.mat-dialog-content {
+  display: block;
+  margin-top: 50px;
+  padding: 0 24px;
+  max-height: 65vh;
+  overflow: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.mat-dialog-actions {
+  padding: 15px 0px 0px 0px;
+  display: flex;
+  flex-wrap: wrap;
+  min-height: 52px;
+  align-items: center;
+  box-sizing: content-box;
+  margin-bottom: -10px;
+}
+
+.file-info-container {
+  margin-top: 10px !important;
+}
+
+.card-header {
+  width: 100%;
+}
+
+.file-info {
+  margin: 1% !important;
+}
+
+.file-input-container {
+  width: 90%;
+  max-width: 400px;
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: 10px;
+  border: .12em dashed;
+}
+
+.file-input {
+  width: 95%;
+  margin: 5px !important;
+}
+
+.progress {
+  border: solid;
+  border-color: darkgray;
+  width: 95%;
+  margin: 2%!important;
+}
+
+.action-container {
+  display: flex;
+}
+
+
+
+/*
+MOBILE
+ */
+@media only screen and (max-width: 768px) {
+  .file-info {
+    width: 200px;
+    margin-left: 3.5%;
+    margin-right: 3.5%;
+  }
+
+  .file-input-container {
+    width: 100%;
+    border-radius: 10px;
+    border: .12em dashed;
+  }
+
+  .file-input {
+    width: 100%;
+    margin: 5px !important;
+  }
+
+  .file-info {
+    margin-top: 10px;
+    margin-left: 3.5%;
+    margin-right: 3.5%;
+  }
+
+  .progress {
+    border: solid;
+    border-color: darkgray;
+    width: 95%;
+    margin: 2%!important;
+  }
+
+  .action-container {
+    display: flex;
+  }
+}

@@ -1,0 +1,66 @@
+#SPRING HIBERNATE SETTINGS
+spring:
+  jpa:
+    show-sql: true
+    database-platform: org.hibernate.dialect.H2Dialect
+    hibernate:
+      ddl-auto: update
+      format_sql: true
+    generate-ddl: true
+
+  #DATASOURCE
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/member_assistance_db?useSSL=false
+    username: ma_db_user
+    password: m@DBu53r
+    data: data.sql
+    initialization-mode: always
+
+  #PROFILE
+  profiles:
+    active: development
+
+  #FILE CONFIGURATION
+  servlet:
+    multipart:
+      max-file-size: 2MB
+      max-request-size: 2MB
+
+#SERVER
+server:
+  port: 9000
+
+#LOGGING CONFIGURATION
+logging:
+  level:
+    org:
+      springframework: INFO
+
+#HIBERNATE
+      hibernate:
+        SQL: DEBUG
+        type:
+          descriptor:
+            sql:
+              BasicBinder: TRACE
+
+#KEYCLOAK SETTINGS
+keycloak:
+  auth-server-url: http://localhost:8180/auth
+  realm: MemberAssistanceRealm
+  resource: Member-Assistance-Api
+  credentials:
+    secret: 1e03fbfb-3c5b-423c-b867-c6742de6b9bb
+  public-client: true
+  principal-attribute: preferred_username
+  autodetect-bearer-only: true
+  ssl-required: external
+  bearer-only: true
+
+#CAPTCHA
+google:
+  recaptcha:
+    key:
+      site: 6LdIQ2saAAAAAIoYe-yEqOFIGA3DRPxq1iqYq1Hu
+      secret: 6LdIQ2saAAAAAGCOKF_V2UUJBpuZA7nhpj0Urlu8

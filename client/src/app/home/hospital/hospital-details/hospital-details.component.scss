@@ -1,0 +1,67 @@
+.page-title {
+    font-size: 24px;
+    display: inline;
+    float: left;
+}
+
+.back-to-list {
+    font-size: 12px;
+    display: inline;
+    float: right;
+}
+
+label {
+    font-weight:bold;
+}
+
+.hospital-details-list-container {
+    margin-top: 20px;
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+
+.hospital-detail-summary-container {
+    width: 100%;
+    margin: auto;
+}
+
+.table-container {
+    position: relative;
+    max-height: 400px;
+    overflow: auto;
+}
+
+.mat-cell {
+    text-align: left;
+}
+
+.mt-tbl-header {
+    background-color: #ff632a;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+//content container section 1
+.content-container {
+    padding-left: 30px;
+}
+
+/*****************************
+MOBILE
+*****************************/
+@media only screen and (max-width: 768px) {
+    .hospital-details-list-container {
+        margin-top: 20px;
+        width: 100%;
+        margin-left: auto;
+        margin-right: auto;
+        text-align: center;
+    }
+
+    .hospital-detail-summary-container {
+        width: 100%;
+        margin: auto;
+    }
+}

@@ -1,0 +1,68 @@
+<h2 mat-dialog-title>{{ title }}</h2>
+<mat-dialog-content class="mat-typography">
+  <mat-tab-group mat-align-tabs="center" class="tab-content">
+    <mat-tab label="Front">
+      <div class="row col-md-12 image-preview no-padding">
+        <img [src]="frontFilePreview" class="col-md-12"/>
+      </div>
+      <div class="row col-md-12 no-padding">
+        <div class="col-md-12 no-padding file-input-container">
+          <label class="btn btn-default col-md-12 no-padding file-input">
+            <input type="file"
+                   accept="image/x-png,image/jpeg"
+                   #fileInput
+                   class="file-input"
+                   (change)="onFileAdded($event, 'front')"/>
+          </label>
+        </div>
+      </div>
+    </mat-tab>
+    <mat-tab label="Back">
+      <div class="row col-md-12 image-preview no-padding">
+        <img [src]="backFilePreview" class="col-md-12"/>
+      </div>
+      <div class="row col-md-12 no-padding">
+        <div class="col-md-12 no-padding file-input-container">
+          <label class="btn btn-default col-md-12 no-padding file-input">
+            <input type="file"
+                   accept="image/x-png,image/jpeg"
+                   #fileInput
+                   class="file-input"
+                   (change)="onFileAdded($event, 'back')"/>
+          </label>
+        </div>
+      </div>
+    </mat-tab>
+  </mat-tab-group>
+  <div class="row">
+    <span class="col-md-12"><b>Accepts:</b> .jpeg/ .jpg/ .png</span>
+    <span class="col-md-12"><b>Max Photo Size:</b> 10MB</span>
+    <!--<span class="col-md-12"><b>Dimensions:</b>3x2</span>-->
+  </div>
+  <div class="card file-info" *ngIf="hasErrorMessage()">
+    <div class="card-header">File Upload Status</div>
+    <span class="alert alert-light" *ngIf="frontMessage">Front: {{ frontMessage }}</span>
+    <span class="alert alert-light" *ngIf="backMessage">Back: {{ backMessage }}</span>
+    <span class="alert alert-light">{{ message }}</span>
+  </div>
+  <div *ngIf="progress" class="progress">
+    <div
+      class="progress-bar progress-bar-info progress-bar-striped"
+      role="progressbar"
+      attr.aria-valuenow="{{ progress }}"
+      aria-valuemin="0"
+      aria-valuemax="100"
+      [ngStyle]="{ width: progress + '%' }">
+      {{ progress }}%
+    </div>
+  </div>
+</mat-dialog-content>
+<mat-dialog-actions align="end" class="action-container">
+  <button mat-button class="btn btn-primary" [disabled]="(!frontFile || !backFile)"
+          (click)="upload()">Upload
+  </button>
+  <button mat-button class="btn btn-secondary" (click)="close()">Close</button>
+</mat-dialog-actions>
+
+
+

@@ -1,0 +1,82 @@
+.show-budget-history-container {
+    margin-top: 20px;
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+
+.table-container {
+    position: relative;
+    max-height: 400px;
+    overflow: auto;
+}
+
+mat-card {
+    width: 80%;
+    min-height: 100px;
+    margin: 2em auto;
+    text-align: center;
+}
+
+.mat-cell {
+    text-align: left;
+    padding: 5px;
+}
+
+.mt-tbl-header {
+    background-color: #ff632a;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+.form-action-button {
+    width: 100%;
+}
+
+::ng-deep .mat-paginator-icon {
+    margin-top: 50px;
+}
+
+::ng-deep .mat-paginator-page-size {
+    margin-top: 25px;
+}
+
+::ng-deep .mat-paginator-range-actions {
+    margin-top: -50px;
+}
+
+::ng-deep .mat-paginator-container {
+    display: flex;
+    align-items: center;
+    margin-left: fill;
+    margin-right: auto;
+    justify-content: flex-end;
+    min-height: 0px;
+    padding: 0 8px;
+    flex-wrap: wrap-reverse;
+    //width: 100%;
+}
+
+/*****************************
+MOBILE
+ *****************************/
+@media only screen and (max-width: 768px) {
+    .show-budget-history-container {
+        margin: 0px;
+        width: 100%;
+        text-align: center;
+    }
+
+    ::ng-deep .mat-paginator-icon {
+        margin-top: 50px;
+    }
+
+    ::ng-deep .mat-paginator-page-size {
+        margin-top: 25px;
+    }
+
+    .table-container {
+        width: 300px;
+    }
+}

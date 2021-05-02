@@ -1,0 +1,73 @@
+<div class="section-container">
+  <mat-card class="hospital-detail-summary-container">
+    <mat-card-header>
+      <mat-card-title class="page-title">{{ hospitalName }}</mat-card-title>
+      <mat-card-title class="back-to-list"><a [routerLink]="'/hospitals'">< Back to List of Hospitals</a></mat-card-title>
+    </mat-card-header>
+    <mat-card-content class="content-container">
+      <div class="row">
+        <div class="column">
+          <div class="">{{ location }}</div>
+          <div class="">{{ contactPerson }}</div>
+          <div class="">{{ designation }}</div>
+          <div class="">{{ contactNumber }}</div>
+          <div class="">{{ emailAddress }}</div>
+        </div>
+        <div class="column">
+          <div class=""><label>Alloted Budget: </label><span>{{ totalBudget | number:'1.0-2' }}</span></div>
+          <div class=""><label>Remaining Budget: </label><span>{{ balance | number:'1.0-2' }}</span></div>
+          <div class=""><label># of Patients Assisted: </label><span>{{ totalAssistedCount }}</span></div>
+          <div class=""><br/></div>
+          <div class="">
+            <a href="javascript:void(0)" *ngIf="hasAddBudgetAccess" (click)="addBudget()">Add Budget |</a>
+            <span><a href="javascript:void(0)" *ngIf="hasShowBudgetAccess" (click)="showBudgetHistory()"> Show Budget Replenish Repository</a></span>
+          </div>                         
+        </div>
+      </div>
+    </mat-card-content>    
+  </mat-card>  
+  <mat-divider></mat-divider>
+  <mat-card class="hospital-details-list-container mat-elevation-z8">
+    <mat-card-content>
+      <table mat-table [dataSource]="dataSource" class="table-container table-striped mat-table"
+             matSort matSortActive="dateAwarded" matSortDisableClear matSortDirection="desc">
+        <!--- Note that these columns can be defined in any order.
+              The actual rendered columns are set as a property on the row definition" -->
+        <!-- Patient Full Name Column -->
+        <ng-container matColumnDef="patientName">
+          <th mat-header-cell *matHeaderCellDef class="mt-tbl-header"> Patient Name</th>
+          <td mat-cell *matCellDef="let element"> {{element.patientFullName}} </td>
+        </ng-container>
+  
+        <!-- Member ID Column -->
+        <ng-container matColumnDef="memberId">
+          <th mat-header-cell *matHeaderCellDef class="mt-tbl-header"> ID Number</th>
+          <td mat-cell *matCellDef="let element"> {{element.memberId}} </td>
+        </ng-container>
+  
+        <!-- Voucher Number Column -->
+        <ng-container matColumnDef="voucherNumber">
+          <th mat-header-cell *matHeaderCellDef class="mt-tbl-header"> Voucher Number</th>
+          <td mat-cell *matCellDef="let element"> {{element.voucherNumber}} </td>
+        </ng-container>
+  
+        <!-- Date Awarded Column -->
+        <ng-container matColumnDef="dateAwarded">
+          <th mat-header-cell *matHeaderCellDef class="mt-tbl-header"> Date Awarded</th>
+          <td mat-cell *matCellDef="let element"> {{element.dateAwarded | date: short}} </td>
+        </ng-container>
+
+        <!-- Amount Column -->
+        <ng-container matColumnDef="amount">
+          <th mat-header-cell *matHeaderCellDef class="mt-tbl-header"> Amount</th>
+          <td mat-cell *matCellDef="let element"> {{element.amount | number:'1.0-2'}} </td>
+        </ng-container>
+  
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      </table>
+      <mat-paginator [pageSizeOptions]="paginator.pageSizeOptions" showFirstLastButtons></mat-paginator>
+    </mat-card-content>
+  </mat-card>
+</div>
+  

@@ -1,0 +1,56 @@
+<mat-toolbar color="primary" class="site-header">
+  <mat-toolbar-row>
+    <div class="nav-logo col-md-2 no-padding" *ngIf="mobile">
+      <img class="logo" src="/assets/images/logo.png">
+    </div>
+    <div class="nav-brand col-md-4" *ngIf="mobile">
+      Member Assistance
+    </div>
+    <div class="nav-action-container col-md-6 no-padding" *ngIf="mobile">
+      <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="MENU">
+        <mat-icon>menu</mat-icon>
+      </button>
+      <mat-icon></mat-icon>
+      <mat-menu #menu="matMenu">
+        <button mat-menu-item class="nav-action" [routerLink]="'/my-profile'" *accessRights="access['myProfile']">
+          <mat-icon>account_box</mat-icon>
+          <span>My Profile</span>
+        </button>
+        <button mat-menu-item class="nav-action" [routerLink]="'/medical-assistance'" *accessRights="access['applyMedicalAssistance']">
+          <mat-icon>notes</mat-icon>
+          <span>Medical Assistance</span>
+        </button>
+        <button mat-menu-item class="nav-action" (click)="logout()">
+          <mat-icon>exit_to_app</mat-icon>
+          <span>Logout</span>
+        </button>
+      </mat-menu>
+    </div>
+    <div class="nav-logo col-md-1 no-padding" *ngIf="!mobile">
+      <img class="logo" src="/assets/images/logo.png">
+    </div>
+    <div class="nav-brand col-md-7" *ngIf="!mobile">
+      {{ displayName }}
+    </div>
+    <div class="nav-action-container col-md-4" *ngIf="!mobile">
+      <div class="nav-action col-md-2 no-padding" *accessRights="access['myProfile']">
+        <button mat-button class="hidden-sm" [routerLink]="'/my-profile'">
+          <mat-icon>account_box</mat-icon>
+          <span>{{ 'My Profile' | translate }}</span>
+        </button>
+      </div>
+      <div class="nav-action col-md-6 no-padding" *accessRights="access['applyMedicalAssistance']">
+        <button mat-icon-button class="hidden-sm" [routerLink]="'/medical-assistance'">
+          <mat-icon>note_add</mat-icon>
+          <span>{{ 'Member Assistance' | translate }}</span>
+        </button>
+      </div>
+      <div class="nav-action col-md-4 no-padding" *accessRights="access['applyMedicalAssistance']">
+        <button mat-icon-button class="hidden-sm" (click)="logout()">
+          <mat-icon>exit_to_app</mat-icon>
+          <span>{{ 'Logout' | translate }}</span>
+        </button>
+      </div>
+    </div>
+  </mat-toolbar-row>
+</mat-toolbar>

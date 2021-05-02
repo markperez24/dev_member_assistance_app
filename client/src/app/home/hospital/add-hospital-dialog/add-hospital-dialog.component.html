@@ -1,0 +1,150 @@
+<mat-card *ngIf="isFormDisplay">
+  <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+    <span class="page-title">Add New Partner Hospital</span>
+    <mat-dialog-content class="mat-typography">
+      <p>
+        <mat-toolbar>
+          <span>Main Details</span>
+        </mat-toolbar>
+      </p>
+      <div class="reg-input-field">
+        <mat-form-field appearance="outline">
+          <mat-label>Hospital Name</mat-label>
+          <input type="text" matInput [errorStateMatcher]="matcher"
+          placeholder=""
+          formControlName="hospitalName">
+        <mat-error *ngIf="registerForm.controls.hospitalName.hasError('required')">
+        Hospital Name is <strong>required</strong>
+        </mat-error>
+      </mat-form-field>
+      </div>
+      <div class="reg-input-field">
+      <mat-form-field appearance="outline">
+        <mat-label>Location</mat-label>
+        <input type="text" matInput [errorStateMatcher]="matcher"
+          placeholder="City, Region"
+          formControlName="location">
+        <mat-error *ngIf="registerForm.controls.location.hasError('required')">
+        Location is <strong>required</strong>
+        </mat-error>
+      </mat-form-field>
+      </div>
+      <div class="reg-text-area-field">
+        <mat-form-field appearance="outline">
+          <mat-label>Street Address</mat-label>
+          <textarea matInput [errorStateMatcher]="matcher"
+                    placeholder="Unit/Block Number & Street"
+                    formControlName="address1"></textarea>
+          <mat-error *ngIf="registerForm.controls.address1.hasError('required')">
+            Address 1 is <strong>required</strong>
+          </mat-error>
+        </mat-form-field>
+      </div>
+      <div class="reg-text-area-field">
+        <mat-form-field appearance="outline">
+          <mat-label>Town / Municipal</mat-label>
+          <textarea matInput [errorStateMatcher]="matcher"
+                    placeholder="Municipal / Town"
+                    formControlName="address2"></textarea>
+          <mat-error *ngIf="registerForm.controls.address2.hasError('required')">
+            Address 2 is <strong>required</strong>
+          </mat-error>
+        </mat-form-field>
+      </div>
+      <!--<h3 mat-subheader>Contact Details</h3>-->
+      <p>
+        <mat-toolbar>
+          <span>Contact Details</span>
+        </mat-toolbar>
+      </p>
+      <div class="reg-input-field">
+      <mat-form-field appearance="outline">
+        <mat-label>Contact Person</mat-label>
+        <input type="text"
+          matInput [errorStateMatcher]="matcher"
+          placeholder=""
+          formControlName="contactPerson">
+        <mat-error *ngIf="registerForm.controls.contactPerson.hasError('required')">
+        Contact Person is <strong>required</strong>
+        </mat-error>
+      </mat-form-field>
+      </div>
+      <div class="reg-input-field">
+      <mat-form-field appearance="outline">
+        <mat-label>Designation</mat-label>
+        <input type="text"
+          matInput [errorStateMatcher]="matcher"
+          placeholder=""
+          formControlName="designation">
+        <mat-error *ngIf="registerForm.controls.designation.hasError('required')">
+        Designation is <strong>required</strong>
+        </mat-error>
+      </mat-form-field>
+      </div>
+      <div class="reg-input-field">
+      <mat-form-field appearance="outline">
+        <mat-label>Contact Number</mat-label>
+        <input type="text" matInput [errorStateMatcher]="matcher"
+          placeholder=""
+          formControlName="contactNumber">
+        <mat-error *ngIf="registerForm.controls.contactNumber.hasError('required')">
+        Contact Number is <strong>required</strong>
+        </mat-error>
+      </mat-form-field>
+      </div>
+      <div class="reg-input-field">
+      <mat-form-field appearance="outline">
+        <mat-label>Email</mat-label>
+        <input type="email" matInput [errorStateMatcher]="matcher"
+          placeholder=""
+          formControlName="emailAddress">
+        <mat-error *ngIf="registerForm.controls.emailAddress.hasError('required')">
+        Email Address is <strong>required</strong>
+        </mat-error>
+        <mat-error *ngIf="registerForm.controls.emailAddress.hasError('email')">
+        Email Address is <strong>invalid</strong>
+        </mat-error>
+      </mat-form-field>
+      </div>
+      <div class="reg-input-field">
+      <mat-form-field appearance="outline" class="short-field">
+        <mat-label>Alloted Budget</mat-label>
+        <input type="number" matInput
+          maxlength="9"
+          [errorStateMatcher]="matcher"
+          placeholder=""
+          formControlName="allotedBudget">
+        <mat-error *ngIf="registerForm.controls.allotedBudget.hasError('required')">
+        Alloted Budget is <strong>required</strong>
+        </mat-error>
+        <mat-error *ngIf="registerForm.controls.allotedBudget.hasError('min')">
+        Alloted Budget minimum is <strong>0</strong>
+        </mat-error>
+      </mat-form-field>
+      </div>
+    </mat-dialog-content>
+
+    <mat-dialog-actions align="end">
+      <div class="form-action-container">
+      <div class="form-action-item mr-3">
+        <button class="form-action-button"
+            type="submit"
+            [disabled]="loading"
+            mat-raised-button
+            color="primary">
+        <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+        Add
+        </button>
+      </div>
+      <div class="form-action-item">
+        <button class="form-action-button btn btn-secondary"
+          [disabled]="loading"
+          mat-raised-button
+          (click)="cancel()">
+        Cancel
+        </button>
+      </div>
+      </div>
+    </mat-dialog-actions>
+  </form>
+</mat-card>

@@ -1,0 +1,28 @@
+/*
+plugins {
+}
+
+group = 'com.member.assistance.adapter'
+version = '0.0.1-SNAPSHOT'
+
+dependencies {
+	//Module Dependencies
+
+	implementation 'org.springframework.boot:spring-boot-starter'
+	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+	runtimeOnly 'com.h2database:h2'
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+}
+
+test {
+	useJUnitPlatform()
+}
+
+bootJar {
+	enabled = false
+}
+
+jar {
+	enabled = true
+}
+*/

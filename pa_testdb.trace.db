@@ -1,0 +1,15 @@
+2020-11-27 10:41:26 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "PA_MEMBER" not found; SQL statement:
+select member0_.id as id1_0_, member0_.email_address as email_ad2_0_, member0_.first_name as first_na3_0_, member0_.last_name as last_nam4_0_, member0_.middle_name as middle_n5_0_ from pa_member member0_ [42102-200]
+2020-11-27 10:41:29 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "PA_MEMBER" not found; SQL statement:
+select member0_.id as id1_0_, member0_.email_address as email_ad2_0_, member0_.first_name as first_na3_0_, member0_.last_name as last_nam4_0_, member0_.middle_name as middle_n5_0_ from pa_member member0_ [42102-200]
+2020-11-27 10:41:48 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "PA_MEMBER" not found; SQL statement:
+select member0_.id as id1_0_, member0_.email_address as email_ad2_0_, member0_.first_name as first_na3_0_, member0_.last_name as last_nam4_0_, member0_.middle_name as middle_n5_0_ from pa_member member0_ [42102-200]
+2020-11-27 10:41:50 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "PA_MEMBER" not found; SQL statement:
+select member0_.id as id1_0_, member0_.email_address as email_ad2_0_, member0_.first_name as first_na3_0_, member0_.last_name as last_nam4_0_, member0_.middle_name as middle_n5_0_ from pa_member member0_ [42102-200]
+2020-11-27 10:41:51 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "PA_MEMBER" not found; SQL statement:
+select member0_.id as id1_0_, member0_.email_address as email_ad2_0_, member0_.first_name as first_na3_0_, member0_.last_name as last_nam4_0_, member0_.middle_name as middle_n5_0_ from pa_member member0_ [42102-200]

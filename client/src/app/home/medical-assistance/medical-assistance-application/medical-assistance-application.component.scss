@@ -1,0 +1,36 @@
+.medical-assistance-container {
+  margin-top: 10px;
+}
+
+.medical-assistance-notes {
+  margin-left: 25px;
+}
+
+.form-action-container {
+  width: 95%;
+  margin-left: 2.5%;
+  margin-right: 2.5%;
+  display: inline-flex;
+  height: 50px;
+}
+
+.form-textarea-field {
+  width: 95%;
+  height: 130px;
+  margin: auto;
+}
+
+.form-input-field {
+  width: 95%;
+  height: 90px;
+  margin: auto;
+}
+
+/*
+MOBILE
+ */
+@media only screen and (max-width: 768px) {
+  .medical-assistance-notes {
+    margin-left: 15px !important;
+  }
+}

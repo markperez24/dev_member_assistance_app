@@ -1,0 +1,50 @@
+group = 'com.member.assistance.api'
+version = '0.0.1-SNAPSHOT'
+
+ext {
+	set('keycloakVersion', '12.0.1')
+}
+
+dependencies {
+	//Module Dependencies
+	api project(":core")
+	api project(":common")
+	//implementation project(":configuration")
+
+	//Spring boot web
+	implementation 'org.springframework.boot:spring-boot-starter'
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+	implementation 'org.springframework.boot:spring-boot-starter-validation'
+
+	// Spring Security & Keycloak
+	implementation 'org.springframework.boot:spring-boot-starter-security'
+	implementation 'org.keycloak:keycloak-spring-boot-starter'
+
+	implementation 'org.apache.commons:commons-lang3'
+	compileOnly 'org.projectlombok:lombok:1.18.16'
+
+
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+}
+
+dependencyManagement {
+	imports {
+		mavenBom "org.keycloak.bom:keycloak-adapter-bom:${keycloakVersion}"
+	}
+}
+
+/*bootJar {
+	baseName = 'member-assistance-api'
+}*/
+test {
+	useJUnitPlatform()
+}
+
+bootJar {
+	enabled = true
+}
+
+jar {
+	enabled = false
+}
+

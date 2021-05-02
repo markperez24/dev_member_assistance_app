@@ -1,0 +1,262 @@
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Expires" content="0">
+<mat-toolbar color="primary" class="site-header">
+  <div class="nav-logo">
+    <img class="logo" src="/assets/images/logo.png">
+  </div>
+  <div class="nav-brand">
+    {{ displayName }}
+  </div>
+</mat-toolbar>
+<ngx-spinner bdColor="rgba(0, 0, 0, 0.8)" size="medium" color="#fff" type="ball-atom" [fullScreen]="true"><p
+  style="color: white"> Loading... </p></ngx-spinner>
+<div class="main-container">
+  <app-registration-video (videoEnded)="onVideoEnded($event)"
+                            *ngIf="!isFormDisplay"></app-registration-video>
+  <mat-card *ngIf="isFormDisplay">
+    <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+      <h3>Sign-Up Form</h3>
+      <div class="reg-input-field">
+        <mat-form-field appearance="outline">
+          <mat-label>Email Address</mat-label>
+          <input type="email" matInput [errorStateMatcher]="matcher"
+                 placeholder=""
+                 formControlName="emailAddress">
+          <mat-error *ngIf="registerForm.controls.emailAddress.hasError('required')">
+            Email Address is <strong>required</strong>
+          </mat-error>
+          <mat-error *ngIf="registerForm.controls.emailAddress.hasError('email')">
+            Email Address is <strong>invalid</strong>
+          </mat-error>
+          <mat-error *ngIf="registerForm.controls.emailAddress.hasError('emailExists')">
+            Email Address <strong>exists</strong>
+          </mat-error>
+        </mat-form-field>
+        <span class="success-message" *ngIf="!exists && registerForm.controls.emailAddress.valid">
+          Email Address <b>OK</b>
+      </span>
+      </div>
+      <div class="reg-input-field">
+        <mat-form-field appearance="outline">
+          <mat-label>Password</mat-label>
+          <input matInput
+                 [type]="hidePassword ? 'password' : 'text'"
+                 [errorStateMatcher]="matcher"
+                 placeholder=""
+                 formControlName="password">
+          <mat-icon matSuffix (click)="hidePassword = !hidePassword">{{hidePassword ? 'visibility_off' : 'visibility'}}</mat-icon>
+          <!--<mat-error>
+            <ng-container *ngFor="let error of errors(registerForm.controls.password)">
+              Password {{ errorMessage(registerForm.controls.password ,error) }} <br>
+            </ng-container>
+          </mat-error>-->
+          <mat-error *ngIf="registerForm.controls.password.hasError('required')">
+            Password is <strong>required</strong>
+          </mat-error>
+          <mat-error *ngIf="registerForm.controls.password.hasError('minlength')">
+            Password length must be minimum of <strong>8 characters</strong>
+          </mat-error>
+          <mat-error *ngIf="registerForm.controls.password.hasError('maxlength')">
+            Password length must be minimum of <strong>16 characters</strong>
+          </mat-error>
+          <mat-error *ngIf="registerForm.controls.password.hasError('hasNumber')">
+            Password must contain a <strong>number</strong>
+          </mat-error>
+          <mat-error *ngIf="registerForm.controls.password.hasError('hasCapitalCase')">
+            Password must contain a <strong>capital case letter</strong>
+          </mat-error>
+          <mat-error *ngIf="registerForm.controls.password.hasError('hasSmallCase')">
+            Password must contain a <strong>lower case letter</strong>
+          </mat-error>
+          <!--<mat-error *ngIf="registerForm.controls.password.hasError('hasSpecialCharacter')">
+            Password must contain a <strong>special character</strong>
+          </mat-error>-->
+        </mat-form-field>
+      </div>
+      <div class="reg-input-field">
+        <mat-form-field appearance="outline">
+          <mat-label>Confirm Password</mat-label>
+          <input matInput
+                 [type]="hideConfirmPassword ? 'password' : 'text'"
+                 [errorStateMatcher]="matcher"
+                 placeholder=""
+                 formControlName="confirmPassword">
+          <mat-icon matSuffix (click)="hideConfirmPassword = !hideConfirmPassword">{{hidePassword ? 'visibility_off' : 'visibility'}}</mat-icon>
+          <mat-error *ngIf="registerForm.controls.confirmPassword.hasError('required')">
+            Confirm Password is <strong>required</strong>
+          </mat-error>
+          <mat-error *ngIf="registerForm.controls.confirmPassword.hasError('PasswordMismatch')">
+            Password <strong>mismatch</strong>
+          </mat-error>
+        </mat-form-field>
+      </div>
+      <div class="reg-input-field">
+        <mat-form-field appearance="outline">
+          <mat-label>First Name</mat-label>
+          <input type="text" matInput [errorStateMatcher]="matcher"
+                 placeholder=""
+                 formControlName="firstName">
+          <mat-error *ngIf="registerForm.controls.firstName.hasError('required')">
+            First Name is <strong>required</strong>
+          </mat-error>
+        </mat-form-field>
+      </div>
+      <div class="reg-input-field">
+        <mat-form-field appearance="outline">
+          <mat-label>Middle Name</mat-label>
+          <input type="text" matInput [errorStateMatcher]="matcher"
+                 placeholder=""
+                 formControlName="middleName">
+          <mat-error *ngIf="registerForm.controls.middleName.hasError('required')">
+            Middle Name is <strong>required</strong>
+          </mat-error>
+        </mat-form-field>
+      </div>
+      <div class="reg-input-field">
+        <mat-form-field appearance="outline">
+          <mat-label>Last Name</mat-label>
+          <input type="text"
+                 matInput [errorStateMatcher]="matcher"
+                 placeholder=""
+                 formControlName="lastName">
+          <mat-error *ngIf="registerForm.controls.lastName.hasError('required')">
+            Last Name is <strong>required</strong>
+          </mat-error>
+        </mat-form-field>
+      </div>
+      <div class="reg-input-field">
+        <mat-form-field appearance="outline">
+          <mat-label>Gender</mat-label>
+          <mat-select [errorStateMatcher]="matcher" formControlName="gender">
+            <mat-option value="Male">Male</mat-option>
+            <mat-option value="Female">Female</mat-option>
+          </mat-select>
+          <mat-error *ngIf="registerForm.controls.gender.hasError('required')">
+            Gender is <strong>required</strong>s
+          </mat-error>
+        </mat-form-field>
+      </div>
+      <div class="reg-input-field">
+        <mat-form-field appearance="outline">
+          <mat-label>Date of Birth</mat-label>
+          <input matInput
+                 [matDatepicker]="picker"
+                 [max]="today"
+                 formControlName="dateOfBirth">
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+          <mat-error *ngIf="registerForm.controls.dateOfBirth.hasError('required')">
+            Date of Birth is <strong>required</strong>
+          </mat-error>
+        </mat-form-field>
+      </div>
+      <div class="reg-input-field">
+        <mat-form-field appearance="outline" class="short-field">
+          <mat-label>Age</mat-label>
+          <input type="number" matInput
+                 maxlength="3"
+                 [errorStateMatcher]="matcher"
+                 placeholder=""
+                 formControlName="age">
+          <mat-error *ngIf="registerForm.controls.age.hasError('required')">
+            Age is <strong>required</strong>
+          </mat-error>
+          <mat-error *ngIf="registerForm.controls.age.hasError('min')">
+            Age minimum is <strong>12</strong>
+          </mat-error>
+          <mat-error *ngIf="registerForm.controls.age.hasError('max')">
+            Age maximum is <strong>120</strong>
+          </mat-error>
+        </mat-form-field>
+      </div>
+      <div class="reg-input-field">
+        <mat-form-field appearance="outline">
+          <mat-label>Street Address</mat-label>
+          <textarea matInput [errorStateMatcher]="matcher"
+                    placeholder="Unit/Block Number & Street"
+                    formControlName="address1"></textarea>
+          <mat-error *ngIf="registerForm.controls.address1.hasError('required')">
+            Address 1 is <strong>required</strong>
+          </mat-error>
+        </mat-form-field>
+      </div>
+      <div class="reg-input-field">
+        <mat-form-field appearance="outline">
+          <mat-label>Town / Municipal</mat-label>
+          <textarea matInput [errorStateMatcher]="matcher"
+                    placeholder="Municipal / Town"
+                    formControlName="address2"></textarea>
+          <mat-error *ngIf="registerForm.controls.address2.hasError('required')">
+            Address 2 is <strong>required</strong>
+          </mat-error>
+        </mat-form-field>
+      </div>
+      <div class="reg-input-field">
+        <mat-form-field appearance="outline">
+          <mat-label>City</mat-label>
+          <input type="text" matInput [errorStateMatcher]="matcher"
+                 placeholder=""
+                 formControlName="city"/>
+          <mat-error *ngIf="registerForm.controls.city.hasError('required')">
+            City 1 is <strong>required</strong>
+          </mat-error>
+        </mat-form-field>
+      </div>
+      <div class="reg-input-field">
+        <mat-form-field appearance="outline">
+          <mat-label>Province</mat-label>
+          <input type="text" matInput [errorStateMatcher]="matcher"
+                 placeholder="Province"
+                 formControlName="province"/>
+          <mat-error *ngIf="registerForm.controls.province.hasError('required')">
+            Province is <strong>required</strong>
+          </mat-error>
+        </mat-form-field>
+      </div>
+      <div class="reg-input-field">
+        <mat-form-field appearance="outline">
+          <mat-label>Contact Number</mat-label>
+          <!--<span matPrefix>+63 &nbsp;</span>-->
+          <input type="text" matInput [errorStateMatcher]="matcher"
+                 placeholder="09xx-xxx-xxxx"
+                 formControlName="contactNumber">
+          <mat-icon matSuffix>phone</mat-icon>
+          <mat-error *ngIf="registerForm.controls.contactNumber.hasError('required')">
+            Contact Number is <strong>required</strong>
+          </mat-error>
+          <mat-error *ngIf="registerForm.controls.contactNumber.hasError('minlength')">
+            Contact Number is <strong>invalid</strong>
+          </mat-error>
+        </mat-form-field>
+      </div>
+      <div class="reg-input-field">
+        <re-captcha (resolved)="resolved($event)"
+                    formControlName="recaptchaReactive"
+                    siteKey="{{ siteKey }}">
+        </re-captcha>
+      </div>
+      <div class="form-action-container">
+        <div class="form-action-item">
+          <button class="form-action-button"
+                  type="submit"
+                  [disabled]="processing$ | async"
+                  mat-raised-button
+                  color="primary">
+            <span *ngIf="processing$ | async" class="spinner-border spinner-border-sm mr-1"></span>
+            Register
+          </button>
+        </div>
+        <div class="form-action-item">
+          <button class="form-action-button"
+                  [disabled]="processing$ | async"
+                  mat-raised-button
+                  color="warn"
+                  (click)="cancel()">
+            Cancel
+          </button>
+        </div>
+      </div>
+    </form>
+  </mat-card>
+</div>

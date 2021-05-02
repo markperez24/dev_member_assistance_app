@@ -1,0 +1,40 @@
+mat-card {
+    width: 80%;
+    min-height: 100px;
+    margin: 2em auto;
+    text-align: center;
+}
+
+mat-form-field {
+    display: block;
+    height: 100px;
+}
+
+.reg-input-field{
+    display: block;
+    width: 95%;
+    margin: auto;
+    height: 100px;
+}
+
+.short-field{
+    width: 200px;
+    height: 100px;
+}
+
+.form-action-container {
+    width: 100%;
+    display: inline-flex;
+    height: 50px;
+}
+
+.form-action-item {
+    width: 50%;
+    display: inline-block;
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+.form-action-button {
+    width: 100%;
+}

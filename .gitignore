@@ -1,0 +1,21 @@
+# See http://help.github.com/ignore-files/ for more about ignoring files.
+
+# compiled output
+adapter/build
+adapter/build/**
+adapter/api/build
+adapter/api/build/**
+adapter/backend/build
+adapter/backend/build/**
+core/build
+core/build/**
+common/build
+common/build/**
+# Only exists if Bazel was run
+
+# dependencies
+*.mv.db
+*.class
+
+#package-lock file
+client/package-lock.json

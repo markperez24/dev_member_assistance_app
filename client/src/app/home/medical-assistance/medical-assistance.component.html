@@ -1,0 +1,154 @@
+<div class="main-container">
+  <mat-card class="medical-summary-container">
+    <!--<div class="row">
+      <div class="page-header"><h3>Medical Assistance</h3></div>
+    </div>-->
+    <mat-card-header>
+      <mat-card-title><span class="page-title">Medical Assistance</span></mat-card-title>
+    </mat-card-header>
+    <mat-card-content class="content-container">
+      <div *ngIf="inReview">
+        <div class="row">Account has incomplete details.</div>
+        <div class="row">
+          <span>Please complete the ff. requirements: </span>
+        </div>
+        <ng-container>
+          <div class="row" *ngFor="let item of requirements; let i = index">
+            <span>{{ i + 1 }}. {{ item }}</span>
+          </div>
+        </ng-container>
+      </div>
+      <div *ngIf="isAllowed">
+        <div class="row">No Current Application.</div>
+        <div class="row">
+          <div class="form-action-item">
+            <button class="form-action-button"
+                    [routerLink]="['/medical-assistance-application']"
+                    mat-raised-button
+                    color="primary">
+              <span *ngIf="!isLoading" class=""></span>
+              APPLY MEDICAL ASSISTANCE NOW
+            </button>
+          </div>
+        </div>
+      </div>
+      <div *ngIf="isProcessed">
+        <div class="row">Your application is now on process.</div>
+      </div>
+      <div *ngIf="isDenied" class="section-instruction">
+        <div class="row">You cannot apply a new medical assistance.</div>
+        <div class="row">REASON: Your last application validity is still within three(3) months.</div>
+        <div class="row">Please re-apply after three(3) months expiration</div>
+        <div class="row">Thank you!</div>
+      </div>
+      <div *ngIf="isApproved" class="row col-md-12">
+        <div class="col-md-6 voucher-summary">
+          <p>Your application is now <b>APPROVED</b></p>
+          <p>Voucher barcode number is: <b>{{ voucherNumber }}</b></p>
+          <p>Please claim the voucher immediately.</p>
+          <p>Please will expire within Ninety(90) days.</p>
+          <p>Already claimed the medical assistance at our partner hospital?</p>
+          <p class="voucher-status" *ngIf="isClaimed">Voucher already claimed / used.</p>
+        </div>
+        <div class="col-md-6">
+            <div class="voucher-image-container">
+              <a target="" (click)="downloadVoucher()">
+                <img mat-card-image
+                     class="voucher-image"
+                     [src]="voucherImage"
+                     alt="#">
+              </a>
+            </div>
+            <div class="voucher-image-note">Click Image to Download</div>
+        </div>
+        <div class="row" *ngIf="!isClaimed">
+          <button type="button" mat-button class="btn-primary" (click)="claimed()">YES, ALREADY CLAIMED</button>
+        </div>
+      </div>
+    </mat-card-content>
+  </mat-card>
+  <mat-divider></mat-divider>
+  <mat-card class="medical-history-container mat-elevation-z8">
+    <!--<div class="row">
+      <div class="page-header"><h5>Application History</h5></div>
+    </div>-->
+    <mat-card-header>
+      <mat-card-title><span class="section-title">Application History</span></mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <mat-table *ngIf="mobile" [dataSource]="dataSource" class="table-container mat-table mat-elevation-z8 table-striped"
+             matSort matSortActive="dateApplied" matSortDisableClear matSortDirection="desc">
+        <!--- Note that these columns can be defined in any order.
+              The actual rendered columns are set as a property on the row definition" -->
+        <!-- Position Column -->
+        <ng-container matColumnDef="hospitalName">
+          <th mat-header-cell *matHeaderCellDef class="mt-tbl-header">Hospital Name</th>
+          <td mat-cell *matCellDef="let element"> {{element.hospitalName}} </td>
+        </ng-container>
+
+        <!-- Name Column -->
+        <ng-container matColumnDef="name">
+          <th mat-header-cell *matHeaderCellDef class="mt-tbl-header">Patient's Name</th>
+          <td mat-cell *matCellDef="let element"> {{element.patientFullName}} </td>
+        </ng-container>
+
+        <!-- Weight Column -->
+        <ng-container matColumnDef="amount">
+          <th mat-header-cell *matHeaderCellDef class="mt-tbl-header">Amount</th>
+          <td mat-cell *matCellDef="let element"> {{element.amount}} </td>
+        </ng-container>
+
+        <!-- Symbol Column -->
+        <ng-container matColumnDef="dateApplied">
+          <th mat-header-cell *matHeaderCellDef class="mt-tbl-header">Date Applied</th>
+          <td mat-cell *matCellDef="let element"> {{element.dateApplied | date: short }} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="status">
+          <th mat-header-cell *matHeaderCellDef class="mt-tbl-header">Status</th>
+          <td mat-cell *matCellDef="let element"> {{element.status}} </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      </mat-table>
+      <table mat-table *ngIf="!mobile" [dataSource]="dataSource" class="table-container mat-table mat-elevation-z8 table-striped"
+                 matSort matSortActive="dateApplied" matSortDisableClear matSortDirection="desc">
+        <!--- Note that these columns can be defined in any order.
+              The actual rendered columns are set as a property on the row definition" -->
+        <!-- Position Column -->
+        <ng-container matColumnDef="hospitalName">
+          <th mat-header-cell *matHeaderCellDef class="mt-tbl-header">Hospital Name</th>
+          <td mat-cell *matCellDef="let element"> {{element.hospitalName}} </td>
+        </ng-container>
+
+        <!-- Name Column -->
+        <ng-container matColumnDef="name">
+          <th mat-header-cell *matHeaderCellDef class="mt-tbl-header">Patient's Name</th>
+          <td mat-cell *matCellDef="let element"> {{element.patientFullName}} </td>
+        </ng-container>
+
+        <!-- Weight Column -->
+        <ng-container matColumnDef="amount">
+          <th mat-header-cell *matHeaderCellDef class="mt-tbl-header">Amount</th>
+          <td mat-cell *matCellDef="let element"> {{element.amount}} </td>
+        </ng-container>
+
+        <!-- Symbol Column -->
+        <ng-container matColumnDef="dateApplied">
+          <th mat-header-cell *matHeaderCellDef class="mt-tbl-header">Date Applied</th>
+          <td mat-cell *matCellDef="let element"> {{element.dateApplied | date: short }} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="status">
+          <th mat-header-cell *matHeaderCellDef class="mt-tbl-header">Status</th>
+          <td mat-cell *matCellDef="let element"> {{element.status}} </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      </table>
+      <mat-paginator [pageSizeOptions]="paginator.pageSizeOptions" showFirstLastButtons></mat-paginator>
+    </mat-card-content>
+  </mat-card>
+</div>

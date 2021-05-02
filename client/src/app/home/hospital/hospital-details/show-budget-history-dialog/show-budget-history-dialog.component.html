@@ -1,0 +1,38 @@
+<h2 mat-dialog-title>Budget Replenish History</h2>    
+<mat-card class="show-budget-history-container mat-elevation-z8">
+    <mat-dialog-content class="mat-typography">
+    
+        <table mat-table [dataSource]="dataSource" class="table-container table-striped mat-table">
+            <!--- Note that these columns can be defined in any order.
+                The actual rendered columns are set as a property on the row definition" -->
+            <!-- Date of Replenishment -->
+            <ng-container matColumnDef="dateCreated">
+            <th mat-header-cell *matHeaderCellDef class="mt-tbl-header"> Date</th>
+            <td mat-cell *matCellDef="let element"> {{element.dateCreated | date: short}} </td>
+            </ng-container>
+
+            <!-- Budget -->
+            <ng-container matColumnDef="amount">
+            <th mat-header-cell *matHeaderCellDef class="mt-tbl-header"> Amount</th>
+            <td mat-cell *matCellDef="let element"> {{element.amount | number:'1.0-2'}} </td>
+            </ng-container>
+
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>
+    
+    <mat-paginator [pageSizeOptions]="paginator.pageSizeOptions" showFirstLastButtons></mat-paginator>        
+    </mat-dialog-content>
+    <mat-dialog-actions class="mat-dialog-actions-align">
+    <div>          
+        <button class="form-action-button btn btn-secondary"
+            type="button"
+            [disabled]="isLoading"
+            mat-raised-button
+            (click)="close()">
+        Close
+        </button>
+    </div>
+    </mat-dialog-actions>
+</mat-card>
+    

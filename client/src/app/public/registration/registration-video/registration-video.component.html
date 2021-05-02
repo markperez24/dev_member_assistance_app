@@ -1,0 +1,54 @@
+<div class="video-container">
+  <div class="video-message">Best use chrome browser to browse through the site.</div>
+  <div class="video-message">{{ videoMessage }}</div>
+  <ng-template #mobile>
+    <!--<youtube-player
+        #player
+        [videoId]="videoId"
+        [width]="500"
+        [height]="400"
+        [playerVars]="playerVars"
+        (ready)="onReady($event)"
+        (stateChange)="onStateChange($event)"
+        class="ytplayer">
+    </youtube-player>-->
+    <video [id]="videoId"
+           class="ytplayer"
+           width="400"
+           height="400"
+           autoplay="true"
+           (ended)="onEnd($event)">
+      <source src="assets/videos/member-assistance-instructional-video.mp4" type="video/mp4">
+      Sorry, your browser doesn't support embedded videos.
+    </video>
+  </ng-template>
+  <ng-template #desktop>
+    <!--<youtube-player
+        #player
+        [videoId]="videoId"
+        [width]="800"
+        [height]="600"
+        [playerVars]="playerVars"
+        (ready)="onReady($event)"
+        (stateChange)="onStateChange($event)"
+        class="ytplayer">
+    </youtube-player>-->
+    <video [id]="videoId"
+           class="ytplayer"
+           width="1280"
+           height="720"
+           autoplay="true"
+           (ended)="onEnd($event)">
+      <source src="assets/videos/member-assistance-instructional-video.mp4" type="video/mp4">
+      Sorry, your browser doesn't support embedded videos.
+    </video>
+  </ng-template>
+  <ng-container *ngTemplateOutlet="windows ? mobile : desktop"></ng-container>
+  <!--<iframe #appVideo class="ytplayer"
+          [src]="videoUrl|safe: 'resourceUrl'"
+          frameborder="0" allowfullscreen allow="autoplay"></iframe>-->
+  <!--<video class="video-registration" #appVideo  controls autoplay muted>
+    <source src="{{ videoUrl }}" type="video/mp4" />
+    Browser not supported
+  </video>-->
+</div>

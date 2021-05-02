@@ -1,0 +1,16 @@
+<h2 mat-dialog-title>Select Report Type</h2>
+  <mat-dialog-content class="approve-dialog-content">
+    <div class="form-input-field">
+      <mat-form-field appearance="standard" class="col-md-12">
+        <mat-label>Report Type(pdf, csv/xlsx)</mat-label>
+        <mat-select [formControl]="reportType">
+          <mat-option value="xlsx" selected>Excel</mat-option>
+          <mat-option value="pdf">PDF</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+  </mat-dialog-content>
+  <mat-dialog-actions align="end" class="action-container">
+    <button type="button" mat-button class="btn btn-primary" (click)="generate()">Generate</button>
+    <button type="button" mat-button class="btn btn-secondary" (click)="close()">Cancel</button>
+  </mat-dialog-actions>

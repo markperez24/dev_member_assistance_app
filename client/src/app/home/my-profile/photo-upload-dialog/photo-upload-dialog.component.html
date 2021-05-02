@@ -1,0 +1,38 @@
+<h2 mat-dialog-title>{{ title }}</h2>
+<mat-dialog-content class="mat-typography">
+  <div class="row col-md-12 no-padding">
+    <div class="col-md-12 no-padding file-input-container">
+      <label class="btn btn-default col-md-12 no-padding file-input">
+        <input type="file"
+               accept="image/x-png,image/jpeg"
+               #fileInput
+               class="file-input"
+               (change)="onFileAdded($event)"/>
+      </label>
+    </div>
+  </div>
+  <div *ngIf="currentFile" class="row col-md-12 no-padding progress">
+    <div
+      class="progress-bar progress-bar-info progress-bar-striped"
+      role="progressbar"
+      attr.aria-valuenow="{{ progress }}"
+      aria-valuemin="0"
+      aria-valuemax="100"
+      [ngStyle]="{ width: progress + '%' }">
+      {{ progress }}%
+    </div>
+  </div>
+  <div class="row no-padding file-info-container">
+    <span class="col-md-12"><b>Accepts:</b> .jpeg/ .jpg/ .png</span>
+    <span class="col-md-12"><b>Max Photo Size:</b> 10MB</span>
+  </div>
+  <div class="row col-md-12 no-padding card file-info-container" *ngIf="message">
+      <div class="card-header">File Upload Status</div>
+      <span class="col-md-12 file-info">{{ message }}</span>
+  </div>
+</mat-dialog-content>
+<mat-dialog-actions align="end" class="action-container">
+  <button mat-button class="btn btn-primary" [disabled]="!currentFile || hasErrorMessage()" (click)="upload()">Upload
+  </button>
+  <button mat-button class="btn btn-secondary" (click)="close()">Close</button>
+</mat-dialog-actions>

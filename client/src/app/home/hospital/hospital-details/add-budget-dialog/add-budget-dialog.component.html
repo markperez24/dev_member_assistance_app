@@ -1,0 +1,46 @@
+<h2 mat-dialog-title>Add Budget</h2>
+<mat-card>
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
+      <mat-dialog-content class="mat-typography">        
+        <div class="reg-input-field">
+        <mat-form-field appearance="outline" >
+          <mat-label>Amount</mat-label>
+          <input type="number" matInput
+            maxlength="9"
+            [errorStateMatcher]="matcher"
+            placeholder=""
+            formControlName="amount">
+          <mat-error *ngIf="form.controls.amount.hasError('required')">
+            Amount is <strong>required</strong>
+          </mat-error>
+          <mat-error *ngIf="form.controls.amount.hasError('min')">
+          Amount minimum is <strong>0</strong>
+          </mat-error>          
+        </mat-form-field>
+        </div>
+      </mat-dialog-content>  
+      <mat-dialog-actions align="end">
+        <div class="form-action-container">
+          <div class="form-action-item">
+            <button class="form-action-button"
+                type="submit"
+                [disabled]="isLoading"
+                mat-raised-button
+                color="primary">
+            <span *ngIf="isLoading" class="spinner-border spinner-border-sm mr-1"></span>
+            Submit
+            </button>
+          </div>
+          <div class="form-action-item">
+            <button class="form-action-button btn btn-secondary"
+              type="button"
+              [disabled]="isLoading"
+              mat-raised-button
+              (click)="cancel()">
+            Cancel
+            </button>
+          </div>
+        </div>
+      </mat-dialog-actions>
+    </form>
+  </mat-card>

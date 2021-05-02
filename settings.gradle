@@ -1,0 +1,10 @@
+rootProject.name = 'member-assistance-app'
+
+include 'core'
+include 'adapter'
+include 'common'
+include 'adapter:api'
+findProject(':adapter:api')?.name = 'api'
+include 'adapter:backend'
+findProject(':adapter:backend')?.name = 'backend'
+

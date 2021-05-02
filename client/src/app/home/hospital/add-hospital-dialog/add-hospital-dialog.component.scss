@@ -1,0 +1,87 @@
+mat-card {
+    width: 80%;
+    min-height: 500px;
+    margin: 2em auto;
+    text-align: center;
+}
+
+mat-form-field {
+    display: block;
+    height: 100px;
+}
+
+.reg-input-field{
+    display: block;
+    width: 95%;
+    margin: auto;
+    height: 85px;
+}
+
+.reg-text-area-field {
+  display: block;
+  width: 95%;
+  margin: auto;
+  height: 110px;
+}
+
+.short-field{
+    width: 200px;
+    height: 100px;
+}
+
+.form-action-container {
+    width: 100%;
+    display: inline-flex;
+    height: 50px;
+}
+
+.form-action-item {
+    width: 50%;
+    display: inline-block;
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+.form-action-button {
+    width: 100%;
+}
+
+.panel-header {
+    font-weight: bold;
+    display: block;
+    margin: 1em auto;
+}
+
+/**
+MOBILE
+ */
+@media only screen and (max-width: 768px) {
+  mat-card {
+    width: 100%;
+    min-height: 100%;
+    margin: 0px;
+    text-align: center;
+  }
+
+  .page-title {
+    font-weight: bolder;
+    font-size: 18px;
+  }
+
+  .mat-dialog-actions {
+    padding: 0px;
+    display: flex;
+    flex-wrap: wrap;
+    min-height: 52px;
+    align-items: center;
+    box-sizing: content-box;
+    margin-bottom: -24px;
+  }
+
+  .form-action-item {
+    width: 50%;
+    display: inline-block;
+    margin-left: 0px;
+    margin-right: 0px;
+  }
+}

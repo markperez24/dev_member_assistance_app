@@ -1,0 +1,64 @@
+<h2 mat-dialog-title>Approve Application</h2>
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+  <mat-dialog-content class="approve-dialog-content">
+    <div class="form-input-field">
+      <mat-form-field appearance="standard" class="col-md-12">
+        <mat-label>Patient's Full Name</mat-label>
+        <input type="text" matInput [errorStateMatcher]="matcher"
+               placeholder=""
+               formControlName="fullName">
+        <mat-error *ngIf="form.controls.fullName.hasError('required')">
+          Full Name is <strong>required</strong>
+        </mat-error>
+      </mat-form-field>
+    </div>
+    <div class="form-input-field">
+      <mat-form-field appearance="standard" class="col-md-12">
+        <mat-label>Hospital Name</mat-label>
+        <input type="text" matInput [errorStateMatcher]="matcher"
+               placeholder=""
+               formControlName="hospitalName">
+        <mat-error *ngIf="form.controls.hospitalName.hasError('required')">
+          Hospital Name is <strong>required</strong>
+        </mat-error>
+      </mat-form-field>
+    </div>
+    <div class="form-input-field">
+      <mat-form-field appearance="standard" class="col-md-12">
+        <mat-label>Assign to ID Number</mat-label>
+        <input type="text" matInput [errorStateMatcher]="matcher"
+               placeholder=""
+               formControlName="accountNumber">
+        <mat-error *ngIf="form.controls.accountNumber.hasError('required')">
+          ID Number is <strong>required</strong>
+        </mat-error>
+      </mat-form-field>
+    </div>
+    <div class="form-input-field">
+      <mat-form-field appearance="standard" class="col-md-12">
+        <mat-label>Amount</mat-label>
+        <input type="number" matInput [errorStateMatcher]="matcher"
+               placeholder=""
+               formControlName="amount">
+        <mat-error *ngIf="form.controls.amount.hasError('required')">
+          Amount is <strong>required</strong>
+        </mat-error>
+      </mat-form-field>
+    </div>
+    <div class="form-input-field">
+      <mat-form-field appearance="standard" class="col-md-12">
+        <mat-label>Voucher Number</mat-label>
+        <input type="text" matInput [errorStateMatcher]="matcher"
+               placeholder=""
+               formControlName="voucherNumber">
+        <mat-error *ngIf="form.controls.voucherNumber.hasError('required')">
+          Voucher Number is <strong>required</strong>
+        </mat-error>
+      </mat-form-field>
+    </div>
+  </mat-dialog-content>
+  <mat-dialog-actions align="end" class="action-container">
+    <button mat-button class="btn btn-primary" [disabled]="form.invalid">Submit</button>
+    <button type="button" mat-button class="btn btn-secondary" (click)="close()">Cancel</button>
+  </mat-dialog-actions>
+</form>

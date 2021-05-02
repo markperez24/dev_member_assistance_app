@@ -1,0 +1,123 @@
+.page-title {
+  font-size: 24px;
+  display: inline;
+  float: left;
+}
+
+.page-subheader {
+  margin-top: 20px;
+  padding-left: 30px;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.back-to-list {
+  font-size: 12px;
+  display: inline;
+  float: right;
+}
+
+label {
+  font-weight: bold;
+}
+
+.member-details-list-container {
+  margin-top: 20px;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
+
+.member-detail-summary-container {
+  width: 100%;
+  margin: auto;
+}
+
+.table-container {
+  position: relative;
+  overflow: auto;
+  width: 100% !important;
+}
+
+.mat-cell {
+  text-align: left;
+}
+
+.mt-tbl-header {
+  background-color: #ff632a;
+  font-weight: bold;
+  font-size: 14px;
+}
+
+//content container section 1
+.content-container {
+  padding-left: 30px;
+}
+
+.voucher-image-container {
+  display: flex;
+  justify-content: left;
+}
+
+.voucher-image {
+  border: 1px solid #ddd; /* Gray border */
+  border-radius: 4px; /* Rounded border */
+  margin: 10px 0 0 20px !important;
+  padding: 5px; /* Some padding */
+  width: 150px; /* Set a small width */
+}
+
+.profile-photo{
+  border-style: solid;
+  border-width: 1px;
+  border-radius: 5px;
+  height: 300px;
+  width: 400px;
+}
+
+.section-container {
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.table-container {
+  position: relative;
+  max-height: 400px;
+  overflow: auto;
+}
+
+/*****************************
+MOBILE
+*****************************/
+@media only screen and (max-width: 768px) {
+  .member-details-list-container {
+    margin-top: 20px;
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+  }
+
+  .member-detail-summary-container {
+    width: 100%;
+    margin: auto;
+  }
+
+  .profile-photo{
+    border-style: solid;
+    border-width: 1px;
+    border-radius: 5px;
+    height: 70%;
+    width: 110%;
+    margin-top: 10px;
+  }
+
+  .table-container {
+    position: relative;
+    overflow: auto;
+    display: block;
+    width: 100% !important;
+  }
+}

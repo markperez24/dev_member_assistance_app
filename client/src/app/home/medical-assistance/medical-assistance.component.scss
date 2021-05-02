@@ -1,0 +1,147 @@
+.page-title {
+  font-size: 24px;
+  font-weight: bolder;
+}
+
+.medical-history-container {
+  margin-top: 20px;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
+
+.form-action-item,
+.medical-summary-container {
+  width: 100%;
+  margin: auto;
+}
+
+.section-instruction {
+  margin-left: 5px;
+}
+
+.voucher-summary {
+  margin-left: -20px;
+}
+
+.voucher-image-container {
+  margin-top: 20px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.voucher-image-note {
+  display: flex;
+  justify-content: flex-end;
+  font-size: 12px;
+}
+
+.voucher-image {
+  border: 1px solid #ddd; /* Gray border */
+  border-radius: 4px; /* Rounded border */
+  padding: 5px; /* Some padding */
+  width: 180px; /* Set a small width */
+}
+
+.table-container {
+  position: relative;
+  max-height: 400px;
+  overflow: auto;
+}
+
+.mt-tbl-header {
+  background-color: #ff632a;
+  font-weight: bold;
+  font-size: 12px;
+}
+
+.mat-cell {
+  text-align: left;
+}
+
+.content-container {
+  padding-left: 30px;
+}
+
+::ng-deep .mat-paginator-page-size {
+  margin-top: 0px;
+}
+
+::ng-deep .mat-paginator-range-actions {
+  margin-top: -50px;
+}
+
+::ng-deep .mat-paginator-container {
+  display: flex;
+  align-items: center;
+  margin-left: fill;
+  margin-right: auto;
+  justify-content: flex-end;
+  min-height: 0px;
+  padding: 0 8px;
+  flex-wrap: wrap-reverse;
+  //width: 100%;
+}
+
+.voucher-status{
+  color: green;
+}
+
+img {
+  border: 1px solid #ddd; /* Gray border */
+  border-radius: 4px;  /* Rounded border */
+  padding: 5px; /* Some padding */
+  width: 150px; /* Set a small width */
+}
+
+/* Add a hover effect (blue shadow) */
+img:hover {
+  box-shadow: 0 0 2px 1px rgba(0, 140, 186, 0.5);
+}
+
+/*****************************
+MOBILE
+ *****************************/
+@media only screen and (max-width: 768px) {
+  .medical-history-container {
+    width: 100%;
+    margin: 0px;
+    text-align: center;
+  }
+
+  .medical-summary-container {
+    width: 100%;
+    margin: auto;
+  }
+
+  ::ng-deep .mat-paginator-icon {
+    margin-top: 50px;
+  }
+
+  ::ng-deep .mat-paginator-page-size {
+    margin-top: 25px;
+  }
+
+  .table-container {
+    width: 300px;
+  }
+
+  .voucher-image-container {
+    margin-top: 20px;
+    margin-left: -20px;
+    display: flex;
+    justify-content: flex-start;
+  }
+
+  .voucher-image-note {
+    margin-left: -20px;
+    display: flex;
+    justify-content: flex-start;
+  }
+
+  .form-action-item {
+    width: 100%;
+    margin: auto;
+  }
+}
